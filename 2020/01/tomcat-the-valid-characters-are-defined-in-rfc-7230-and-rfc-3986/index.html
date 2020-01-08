@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986 - lljiny 丨 Blog
+      </title>
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  
+  <meta name="theme-color" content="#000000" />
+  
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <meta name="description" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" />
+  <meta name="generator" content="Hugo 0.62.2 with theme pure" />
+  <title>Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986 - lljiny 丨 Blog</title>
+  
+  
+  <link rel="stylesheet" href="https://lljiny.github.io/css/style.min.9aaa883ebea87c2fd2d087c069cb2736c5f6cb2d52460262cad27bb9f932afc8.css">
+  
+  <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+  <meta property="og:title" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" />
+<meta property="og:description" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lljiny.github.io/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/" />
+<meta property="article:published_time" content="2020-01-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-07T00:00:00+00:00" />
+<meta itemprop="name" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986">
+<meta itemprop="description" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986">
+<meta itemprop="datePublished" content="2020-01-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="552">
+
+
+
+<meta itemprop="keywords" content="Tomcat,problem," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986"/>
+<meta name="twitter:description" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986"/>
+
+  <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
+
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/lljiny" target="_blank">
+            <img class="img-circle img-rotate" src="https://lljiny.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">lljiny</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">Java 开发工程师</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>深圳, 中国</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">主页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://lljiny.github.io/categories/tomcat/" class="category-list-link">tomcat</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://lljiny.github.io/tags/problem/" class="tag-list-link">problem</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://lljiny.github.io/tags/tomcat/" class="tag-list-link">tomcat</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://lljiny.github.io/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/" class="title">Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-01-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-01-07</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/"
+    >Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://lljiny.github.io/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/" class="article-date">
+  <time datetime="2020-01-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2020-01-07</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/tomcat/"> Tomcat </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/tomcat/"> Tomcat </a>
+    <a class="article-tag-link" href="/tags/problem/"> problem </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 552字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="问题">问题</h1>
+<p>最近项目遇到一个问题， 在访问项目接口（ GET 请求 ）时， 返回 400 响应码， 且服务端报错：</p>
+<blockquote>
+<p>java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986</p>
+</blockquote>
+<h1 id="分析">分析</h1>
+<p>谷歌翻译如下：</p>
+<blockquote>
+<p>在请求目标中找到无效字符。 有效字符在 RFC 7230 和 RFC 3986 中定义</p>
+</blockquote>
+<p>到底有哪些有效字符呢？ 查询 <a href="https://tools.ietf.org/html/rfc7230">RFC 7230</a> 和 <a href="https://www.rfc-editor.org/rfc/rfc3986">RFC 3986</a> 文档， 发现有 84 个有效字符可以直接使用 ：</p>
+<blockquote>
+<p><strong>reserved</strong>     = gen-delims / sub-delims</p>
+<p>gen-delims  = &ldquo;:&rdquo; / &ldquo;/&rdquo; / &ldquo;?&rdquo; / &ldquo;#&rdquo; / &ldquo;[&rdquo; / &ldquo;]&rdquo; / &ldquo;@&rdquo;</p>
+<p>sub-delims  = &ldquo;!&rdquo; / &ldquo;$&rdquo; / &ldquo;&amp;&rdquo; / &ldquo;'&rdquo; / &ldquo;(&rdquo; / &ldquo;)&rdquo; / &ldquo;*&rdquo; / &ldquo;+&rdquo; / &ldquo;,&rdquo; / &ldquo;;&rdquo; / &ldquo;=&rdquo;</p>
+<p><strong>unreserved</strong>  = ALPHA / DIGIT / &ldquo;-&rdquo; / &ldquo;.&rdquo; / &ldquo;_&rdquo; / &ldquo;~&rdquo;</p>
+<p>ALPHA       =  %x41-5A / %x61-7A   ; A-Z / a-z</p>
+<p>DIGIT         =  %x30-39  ; 0-9</p>
+</blockquote>
+<p>而我使用的目标 url 中的 “{”、“}”字符不在其中， 是非法的。</p>
+<h1 id="解决">解决</h1>
+<h2 id="请求中-queryparam-不使用非法字符参数">请求中 queryParam 不使用非法字符参数</h2>
+<p>一般情况下可以避免 GET 请求使用非法字符参数， 如： 改用 POST 请求提交包含 “{”、“}” 的 json 格式参数， 或对参数 base64 编码处理</p>
+<h2 id="请求中-queryparam-使用-urlencode-编码">请求中 queryParam 使用 urlEncode 编码</h2>
+<p>前端对请求中的 queryParam 进行 urlEncode 编码处理， 如： “{” 转换为 “%7b”、 “}” 转换为 “%7d”</p>
+<h2 id="tomcat-版本降级--配置支持特殊字符">Tomcat 版本降级 / 配置支持特殊字符</h2>
+<p>根据 Tomcat 更新日志（<a href="https://tomcat.apache.org/tomcat-7.0-doc/changelog.html">7.0</a>、 <a href="https://tomcat.apache.org/tomcat-8.0-doc/changelog.html">8.0</a>、 <a href="https://tomcat.apache.org/tomcat-8.5-doc/changelog.html">8.5</a>、 <a href="https://tomcat.apache.org/tomcat-9.0-doc/changelog.html">9.0</a>）， 可知不同 Tomcat 版本有不同的解决方案：</p>
+<ul>
+<li>下列 Tomcat 版本以上（包括）， 修改 Tomcat 的 <strong>server.xml</strong> 配置文件， 新增 <strong>Connector</strong> 节点属性 <strong><code>relaxedQueryChars=&quot;{,}&quot;</code></strong>
+<ul>
+<li>9.0.8</li>
+<li>8.5.31</li>
+<li>8.0.52</li>
+<li>7.0.87</li>
+</ul>
+</li>
+<li>下列 Tomcat 版本以上（包括）， 修改 Tomcat 的 <strong>catalina.properties</strong> 配置文件，新增 <strong><code>tomcat.util.http.parser.HttpParser.requestTargetAllow={}</code></strong>
+<ul>
+<li>9.0.0.M12</li>
+<li>8.5.7</li>
+<li>8.0.39</li>
+<li>7.0.73</li>
+</ul>
+</li>
+<li>其它 Tomcat 版本， 无需处理， 并没有这个新特性</li>
+</ul>
+<p>Tomcat 更新日志参考关键字</p>
+<blockquote>
+<p><a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=62273">62273</a>: Implement configuration options to work-around specification non-compliant user agents (including all the major browsers) that do not correctly %nn encode URI paths and query strings as required by RFC 7230 and RFC 3986. (markt)</p>
+<p>Add additional checks for valid characters to the HTTP request line parsing so invalid request lines are rejected sooner.</p>
+</blockquote>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://lljiny.github.io/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/" title="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" target="_blank" rel="external">https://lljiny.github.io/2020/01/tomcat-the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>遵循&nbsp;<a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>&nbsp;版权协议， 转载请附上本文链接和作者信息
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/lljiny" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://lljiny.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/lljiny" target="_blank"><span class="text-dark">lljiny</span><small class="ml-1x">Java 开发工程师</small></a></h3>
+        <div>不务正业的代码搬运工~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="next">
+                <a href="https://lljiny.github.io/about/"
+                    title="about"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://lljiny.github.io/donate/alipayQrCode.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://lljiny.github.io/donate/wechatQrCode.png"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/lljiny" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://lljiny.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2020  -
+    2020
+    <div class="publishby">
+        Powered by <a href="https://gohugo.io/" target="_blank"> Hugo</a>.
+		<br />
+		Theme<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://lljiny.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://lljiny.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/lljiny.github.io\/',
+            CONTENT_URL: 'https:\/\/lljiny.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://lljiny.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+  </body>
+</html>
