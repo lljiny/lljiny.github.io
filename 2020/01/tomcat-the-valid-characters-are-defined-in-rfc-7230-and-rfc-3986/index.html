@@ -30,7 +30,8 @@
   
   <link rel="stylesheet" href="https://lljiny.github.io/css/style.min.9aaa883ebea87c2fd2d087c069cb2736c5f6cb2d52460262cad27bb9f932afc8.css">
   
-  <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" async>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
   <meta property="og:title" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" />
 <meta property="og:description" content="Tomcat 报错：The valid characters are defined in RFC 7230 and RFC 3986" />
@@ -473,5 +474,20 @@
     });
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '4c76b1126275765923e4',
+        clientSecret: 'c3b9ba2f85d0e2d2f7c34b5e6eb4d10c3fc39092',
+        repo: 'blogtalk',
+        owner: 'lljiny',
+        admin: ['lljiny'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    });
+    gitalk.render('comments');
+</script>
   </body>
 </html>
